@@ -1,5 +1,6 @@
 pipeline {
     agent any 
+
     stages {
 
          stage ("checkout stage"){
@@ -9,10 +10,17 @@ pipeline {
         }
         stage ("build docker iamge"){
             steps{
-                sh "docker build ."
+                sh "docker build  -t abdulfattahassad/nodejs-docker ."
             }
         }
-
+        stage ("push the docker image"){
+            steps{
+               withCredentials([string(credentialsId: 'docker-hub-secret', variable: 'dockerhubsecret')]) {
+                 sh 'docker login -u abdulfattahassad -p ${dockerhubsecret}'
+                 sh 'docker push abdulfattahassad/nodejs-docker'
+                }
+            }
+        }
     }
 
 
