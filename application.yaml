@@ -31,8 +31,8 @@ spec:
   type: LoadBalancer 
   selectors:
     env: prod 
-  protocol:
-    - port: 3000
-      targetport: 3000
-      nodeport: 3000
+ports:
+  - port: 3000
+    targetport: 3000
+    nodeport: 3000
 
