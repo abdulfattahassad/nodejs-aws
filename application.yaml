@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nodejscontainers
-        image: abdulfattahassad/nodejs-docker
+        image: abdulfattahassad/nodejs-docker:latest
         ports:
         - containerPort: 3000
 
@@ -32,9 +32,7 @@ spec:
   selector:
     env: prod 
 ports:
-  - name: MYAPP
-    protocol: TCP
-    port: 2000
+  - port: 2000
     targetPort: 3000
     nodePort: 3500
 
