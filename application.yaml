@@ -29,9 +29,8 @@ metadata:
   name: nodejs-service
 spec:
   type: LoadBalancer 
-  selecotrs:
-    label: 
-      env: prod 
+  selectors:
+    env: prod 
   protocol:
     - port: 3000
       targetport: 3000
