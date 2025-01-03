@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment 
 metadata: 
-  name: Nodjs-Deployment
+  name: nodjs-deployment
 
 spec:
   replicas: 3
@@ -15,7 +15,7 @@ spec:
         env: prod 
     spec:
       containers:
-      - name: NodejsContainers
+      - name: nodejscontainers
         image: abdulfattahassad/nodejs-docker
         ports:
         - containerPort: 3000
@@ -24,7 +24,7 @@ spec:
 
 
 apiVersion: v1 
-kind: service 
+kind: Service 
 metadata:
   name: nodejs-service
 spec:
