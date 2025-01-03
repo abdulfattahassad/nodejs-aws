@@ -19,13 +19,6 @@ spec:
         image: abdulfattahassad/nodejs-docker
         ports:
         - containerPort: 3000
-      resources:
-      limits:
-        cpu: 200m
-        memory: 500Mi
-      requests:
-        cpu: 100m
-        memory: 200Mi
 
 ---
 
@@ -36,11 +29,12 @@ metadata:
   name: nodejs-service
 spec:
   type: LoadBalancer 
-  selectors:
+  selector:
     env: prod 
 ports:
-  - port: 3000
+  - name: MYAPP
+    protocol: TCP
+    port: 2000
     targetPort: 3000
-    nodePort: 3000
-
+    nodePort: 3500
 
