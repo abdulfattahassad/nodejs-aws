@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: Nodjs-Deployment
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      env: prod
+  template:
+    metadata: 
+      name: Nodejs-Pods
+      labels:
+        env: prod 
+    spec:
+      containers:
+      - name: NodejsContainers
+        image: abdulfattahassad/nodejs-docker
+        ports:
+        - containerPort: 3000
+        
+---
+
+
+apiVersion: v1 
+kind: service 
+metadata:
+  name: nodejs-service
+spec:
+  type: LoadBalancer 
+  selecotrs:
+    label: 
+      env: prod 
+  protocol:
+    - port: 3000
+      targetport: 3000
+      nodeport: 3000
+
