@@ -31,8 +31,7 @@ spec:
   type: LoadBalancer 
   selector:
     env: prod 
-ports:
+  ports:
   - port: 2000
     targetPort: 3000
-    nodePort: 3500
-
+    nodePort: 3100
