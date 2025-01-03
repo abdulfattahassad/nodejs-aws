@@ -19,7 +19,14 @@ spec:
         image: abdulfattahassad/nodejs-docker
         ports:
         - containerPort: 3000
-        
+      resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+
 ---
 
 
@@ -35,4 +42,5 @@ ports:
   - port: 3000
     targetPort: 3000
     nodePort: 3000
+
 
