@@ -5,6 +5,14 @@ pipeline {
     }
 
     stages {
+        
+         stage ("clean stage"){
+            steps{
+                
+            deleteDir()            
+                
+            }
+        }
 
          stage ("checkout stage"){
             steps{
@@ -30,6 +38,7 @@ pipeline {
                 sh "aws eks update-kubeconfig --region us-east-1 --name eks-nodejs-project"
                 sh "kubectl config get-contexts"
                 sh "kubectl get nodes"
+                sh "kubectl delete service nodejs-service"
                 sh "kubectl apply -f application.yaml"
             }
     }
